@@ -39,9 +39,15 @@ float sum_matrix(const float* a, float result, const size_t size)
 
 }
 
-int main()
+int main(int argc, char** argv)
 {
-    const size_t size {1000000000};
+    size_t size{100};
+    if(argc!=1)
+    {
+         size = atoi(argv[1]);
+    }
+    std::cout<<"Количество элементов: "<<size<<"\n";
+
     float* a = new float[size];
 
     for(size_t i = 0; i<size; i++)

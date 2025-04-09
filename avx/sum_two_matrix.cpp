@@ -23,8 +23,15 @@ void add_arrays(const float* a, const float* b, float* result, const size_t size
     }
 }
 
-int main() {
-    const size_t size = 600000000; 
+int main(int argc, char** argv) 
+{
+    size_t size{100};
+    if(argc!=1)
+    {
+         size = atoi(argv[1]);
+    }
+    std::cout<<"Количество элементов: "<<size<<"\n";
+
     float* a = new float[size];
     float* b = new float[size];
     for(size_t i{0}; i<size; i++)

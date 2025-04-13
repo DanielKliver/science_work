@@ -1,0 +1,28 @@
+#! /usr/bin/gnuplot -persist
+
+set terminal pngcairo enhanced font "Arial,12" size 800,600
+set output "sum_two_matrix.png"
+
+set xlabel "Size of matrix" 
+set ylabel "Time (seconds)"
+set datafile separator ' '
+set title ""
+
+set grid
+set yrange [0:0.6]
+set xrange[10000000:100000000]
+set style line 1 lt 1 lc rgb "green" lw 3
+set style line 2 lt 1 lc rgb "blue" lw 3
+
+plot "result_sum_two_matrix_std_avx.txt" using 1:2 with lines linestyle 1 title "std", \
+    "" using 1:3 with lines linestyle 2 title "avx", \
+    "" using 1:2 with points lc "black" title '', \
+    "" using 1:3 with points lc "black" title ''
+
+
+set output "sum_matrix.png"
+
+plot "result_sum_matrix_std_avx.txt" using 1:2 with lines linestyle 1 title "std", \
+    "" using 1:3 with lines linestyle 2 title "avx", \
+    "" using 1:2 with points lc "black" title '', \
+    "" using 1:3 with points lc "black" title ''
